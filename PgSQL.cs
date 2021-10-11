@@ -105,7 +105,7 @@ public class PgSQL
                     Select(conn, c.Select, listForOut);
                     foreach (ForOut f in listForOut)
                     {
-                        if (c.Value == f.Value)
+                        if (c.Value == f.Value) //Есть ли в таблице такое значение
                         {
                             insertString += $"{f.Id}, ";
                             insertArr[cnt] = f.Id;
@@ -113,7 +113,7 @@ public class PgSQL
                             break;
                         }
                     }
-                    if (!isInTable)
+                    if (!isInTable) //Если значения нет - записать
                     {
                         Insert(conn, c.Value, c.Select);
                         //Требует оптимизации
