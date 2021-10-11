@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="background">
+    <div class="container">
+        <div class="screen">
+            <div class="screen-header">
+                <div class="screen-header-left">
+                    <div class="screen-header-button closeleft"></div>
+                    <div class="screen-header-button maximize"></div>
+                    <div class="screen-header-button minimize"></div>
+                </div>
+                <div class="screen-header-right">
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                </div>
+            </div>
+            <div class="screen-body">
+                <div class="screen-body-item left">
+                    <div class="app-title">
+                        <span>@Model.Message</span>
+                        <span>@Model.LMessage</span>
+                    </div>
+                    <div class="app-contact">Разработал Димухаметов Данил</div>
+                </div>
+                <div class="screen-body-item">
+                    <div class="app-form">
+                        <form method="POST">
+                            <div class="app-form-group">
+                                <input class="app-form-control" placeholder="Фамилия" id="Surname_in" name="Surname">
+                                <asp:Label ID="Label1" runat="server" for="Surname"><p class="Error" id="Surname_l">Invalid input</p></asp:Label>
+                            </div>
+                            <div class="app-form-group">
+                                <input class="app-form-control" placeholder="Имя" id="Name_in" name="Name">
+                                <asp:Label ID="Label1" runat="server" for="Name"><p class="Error" id="Name_l"></p></asp:Label>
+                            </div>
+                            <div class="app-form-group">
+                                <input class="app-form-control" placeholder="Отчество" id="Middlename_in" name="Middlename">
+                                <asp:Label ID="Label1" runat="server" for="Middlename"><p class="Error" id="Middlename_l">Invalid input</p></asp:Label>
+                            </div>
+                            <div class="app-form-group">
+                                <input class="app-form-control" placeholder="Улица" id="Street_in" name="Street">
+                                <asp:Label ID="Label1" runat="server" for="Street"><p class="Error" id="Street_l">Invalid input</p></asp:Label>
+                            </div>
+                            <div class="app-form-group phone">
+                                <input class="app-form-control" placeholder="Телефон" id="Phone_in" name="Phone">
+                                <asp:Label ID="Label1" runat="server" for="Phone"><p class="Error" id="Phone_l">Invalid input</p></asp:Label>
+                            </div>
+                            <div class="app-form-group buttons">
+                                <button class="app-form-button" id="cncl">CANCEL</button>
+                                <button type="submit" class="app-form-button" id="snd">SEND</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
