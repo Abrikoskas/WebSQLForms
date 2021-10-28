@@ -7,6 +7,24 @@ public class PersonInfo
     }
     public string Surname { get; set; }
     public string Name { get; set; }
+    /*public string Middlename
+    {
+        get
+        {
+            if (Middlename.Equals(null))
+            {
+                return "default";
+            }
+            else
+            {
+                return Middlename;
+            }
+        }
+        set
+        {
+
+        }
+    }*/
     public string Middlename { get; set; }
     public string Street { get; set; }
     public string Phone { get; set; }

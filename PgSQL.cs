@@ -16,7 +16,20 @@ public class PgSQL
         public int Id;
         public string Value;
     }
+
+    public struct ForMainOut
+    {
+        public string Id;
+        public string Surname;
+        public string Name;
+        public string Middlename;
+        public string Street;
+        public string Phone;
+    }
+
     public static List<ForOut> listForOut = new List<ForOut>();
+
+    public static List<ForMainOut> mainList = new List<ForMainOut>();
 
     public static void ListClean(List<ForOut> list)
     {
@@ -44,6 +57,32 @@ public class PgSQL
         }
     }
 
+    public static void Select(List<ForMainOut> mainList)
+    {
+        using (var conn = new NpgsqlConnection(connString))
+        {
+            conn.Open();
+            ForMainOut mainOut = new ForMainOut();
+            using (var command = new NpgsqlCommand("SELECT s.surname, n.name, m.middlename, str.street, c.phone from clients c join surnames s on s.s_id = c.surname join names n on n.n_id = c.name join middlenames m on m.m_id = c.middlename join streets str on str.str_id = c.street", conn))
+
+            {
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    //mainOut.Id = reader.GetString(0);
+                    mainOut.Surname = reader.GetString(0);
+                    mainOut.Name = reader.GetString(1);
+                    mainOut.Middlename = reader.GetString(2);
+                    mainOut.Street = reader.GetString(3);
+                    mainOut.Phone = reader.GetString(4);
+                    mainList.Add(mainOut);
+
+                }
+                reader.Close();
+            }
+        }
+    }
+
 
     public static void Insert(NpgsqlConnection conn, string Value, string select)
     {
@@ -56,6 +95,8 @@ public class PgSQL
             Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
         }
     }
+
+
 
     public static void BigInsert(NpgsqlConnection conn, int[] arr, string phone)
     {
@@ -98,6 +139,10 @@ public class PgSQL
 
             foreach (WebSQLForms.Check c in lfcheck)
             {
+                if (c.IsNULL)
+                {
+
+                }
                 if (!c.IsPhone)
                 {
                     isInTable = false;
@@ -131,7 +176,7 @@ public class PgSQL
                     }
                 }
                 else if (c.IsPhone)
-                {
+                { 
                     insertString += $"{c.Value}, ";
                     phone = c.Value;
                 }
