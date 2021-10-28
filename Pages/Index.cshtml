@@ -4,6 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
+
 <div class="background">
     <div class="container">
         <div class="screen">
@@ -14,16 +15,20 @@
                     <div class="screen-header-button minimize"></div>
                 </div>
                 <div class="screen-header-right">
+                    <!--<button onclick="myFunction()" class="dropbtn">-->
                     <div class="screen-header-ellipsis"></div>
                     <div class="screen-header-ellipsis"></div>
                     <div class="screen-header-ellipsis"></div>
+                    <!--</button>-->
                 </div>
             </div>
             <div class="screen-body">
                 <div class="screen-body-item left">
                     <div class="app-title">
-                        <span>@Model.Message</span>
-                        <span>@Model.LMessage</span>
+                        <span>MENU</span>
+                        <form action="/update">
+                            <button type="submit" class="app-form-button" style="font-size: 26px !important; padding: 0px ">Update</button>
+                        </form>
                     </div>
                     <div class="app-contact">Разработал Димухаметов Данил</div>
                 </div>
@@ -31,27 +36,27 @@
                     <div class="app-form">
                         <form method="POST">
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="Фамилия" id="Surname_in" name="Surname">
+                                <input class="app-form-control" placeholder="Фамилия" id="Surname_in" name="Surname" required="required" maxlength="30">
                                 <asp:Label ID="Label1" runat="server" for="Surname"><p class="Error" id="Surname_l">Invalid input</p></asp:Label>
                             </div>
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="Имя" id="Name_in" name="Name">
+                                <input class="app-form-control" placeholder="Имя" id="Name_in" name="Name" required="required" maxlength="30">
                                 <asp:Label ID="Label1" runat="server" for="Name"><p class="Error" id="Name_l"></p></asp:Label>
                             </div>
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="Отчество" id="Middlename_in" name="Middlename">
+                                <input class="app-form-control" placeholder="Отчество" id="Middlename_in" name="Middlename" maxlength="30">
                                 <asp:Label ID="Label1" runat="server" for="Middlename"><p class="Error" id="Middlename_l">Invalid input</p></asp:Label>
                             </div>
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="Улица" id="Street_in" name="Street">
+                                <input class="app-form-control" placeholder="Улица" id="Street_in" name="Street" required="required" maxlength="30">
                                 <asp:Label ID="Label1" runat="server" for="Street"><p class="Error" id="Street_l">Invalid input</p></asp:Label>
                             </div>
                             <div class="app-form-group phone">
-                                <input class="app-form-control" placeholder="Телефон" id="Phone_in" name="Phone">
+                                <input class="app-form-control" placeholder="Телефон 89872891602" id="Phone_in" name="Phone" required="required" maxlength="11">
                                 <asp:Label ID="Label1" runat="server" for="Phone"><p class="Error" id="Phone_l">Invalid input</p></asp:Label>
                             </div>
                             <div class="app-form-group buttons">
-                                <button class="app-form-button" id="cncl">CANCEL</button>
+                                <button class="app-form-button" id="cncl" type="reset">CANCEL</button>
                                 <button type="submit" class="app-form-button" id="snd">SEND</button>
                             </div>
                         </form>

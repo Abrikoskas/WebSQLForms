@@ -1,0 +1,71 @@
+﻿@page
+@model WebSQLForms.Pages.UpdateModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container">
+        <div class="screen">
+            <div class="screen-header">
+                <div class="screen-header-left">
+                    <div class="screen-header-button closeleft"></div>
+                    <div class="screen-header-button maximize"></div>
+                    <div class="screen-header-button minimize"></div>
+                </div>
+                <div class="screen-header-right">
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                </div>
+            </div>
+            <div class="screen-body" style="Justify-content: center; flex-direction: column;">
+                <div>
+                    <form method="POST">
+                        <div class="app-form-group headermy">
+                            <input class="app-form-control" value="Фамилия" required="required" maxlength="30" readonly><input class="app-form-control" value="Имя" required="required" maxlength="30" readonly><input class="app-form-control" value="Отчество" required="required" maxlength="30" readonly><input class="app-form-control" value="Улица" required="required" maxlength="30" readonly><input class="app-form-control" value="Номер телефона" required="required" maxlength="30" readonly>
+                        </div>
+                        @foreach (PgSQL.ForMainOut f in PgSQL.mainList)
+                        {
+                        <div class="app-form-group">
+                            <input class="app-form-control" value="@f.Surname" required="required" maxlength="30"><input class="app-form-control" value="@f.Name" required="required" maxlength="30"><input class="app-form-control" value="@f.Middlename" required="required" maxlength="30"><input class="app-form-control" value="@f.Street" required="required" maxlength="30"><input class="app-form-control" value="@f.Phone" required="required" maxlength="30">
+                        </div>
+                        }
+                    </form>
+                </div>
+                <div>
+                    <form action="/update" method="post">
+                        <div class="app-form-group buttons">
+                            <button type="submit" class="app-form-button">Update</button>
+                            <button class="app-form-button" id="cncl" type="reset">CANCEL</button>
+                            <button type="submit" class="app-form-button" id="snd">SEND</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<style>
+
+    input{
+        width: 140px !important; 
+        margin-right: 5px;
+
+    }
+    .screen{
+        width: 800px;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+    .app-form-group.headermy{
+        border-bottom: none !important;
+        background: #1d423c;
+    }
+</style>
+
+@*@foreach (PgSQL.ForMainOut f in PgSQL.mainList)
+{
+    <p>@f.Surname @f.Name @f.Middlename @f.Street @f.Phone</p>
+    
+}*@

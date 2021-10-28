@@ -5,13 +5,13 @@
 }
 
 html {
-    overflow: hidden;
+    overflow: auto;
 }
 
 body {
     background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
     font-size: 12px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 body, button, input {
@@ -210,6 +210,18 @@ body, button, input {
 .Error {
     color: red;
     display: none;
+}
+
+#button {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: none;
+    border: none;
+    color: #ea1d6f;
+    font-size: 26px !important;
+    cursor: pointer;
+    outline: none;
 }
 
 @media screen and (max-width: 520px) {
